@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { LetterButton } from "./LetterButton";
+import { User } from "./User";
 
 export const UsersList = ({ letter, users }) => {
   const [expanded, setExpanded] = useState(false);
@@ -10,11 +11,11 @@ export const UsersList = ({ letter, users }) => {
 
   return (
     <>
-      <LetterButton letter={letter} onClick={handleClick} />
+      <LetterButton letter={letter} active={expanded} onClick={handleClick} />
       {expanded && (
         <div>
           {(users || []).map(user => (
-            <div key={user.id}>{user.login}</div>
+            <User key={user.id} user={user} />
           ))}
         </div>
       )}

@@ -16,3 +16,10 @@ export const getUsers = async name => {
   items.sort(sortByLogin);
   return items;
 };
+
+export const getUserRepos = async login => {
+  // TODO: add some error handling, defaults, shared fetching function...
+  const result = await fetch(`https://api.github.com/users/${login}/repos`);
+  const items = await result.json();
+  return items;
+};
